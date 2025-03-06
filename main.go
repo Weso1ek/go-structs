@@ -36,18 +36,19 @@ func main() {
 	alex3.contactInfo.email = "tescior@gmail.com"
 	alex3.contactInfo.zipCode = 222
 
-	fmt.Println(alex)
-	fmt.Println(alex2)
-	fmt.Println(alex3)
+	//fmt.Println(alex)
+	//fmt.Println(alex2)
+	//fmt.Println(alex3)
 
-	alex.updateName("Robocop")
+	alexPointer := &alex //
+	alexPointer.updateName("Robocop")
 	alex.print()
 	alex2.print()
 	alex3.print()
 }
 
-func (p person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
 }
 
 func (p person) print() {
