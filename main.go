@@ -10,7 +10,8 @@ type contactInfo struct {
 type person struct {
 	firstName string
 	lastName  string
-	contact   contactInfo
+	//contact   contactInfo
+	contactInfo // TIP można to zrobić inaczej bez nazwy pola
 }
 
 func main() {
@@ -18,7 +19,7 @@ func main() {
 	alex := person{
 		firstName: "Alex",
 		lastName:  "Anderson",
-		contact: contactInfo{
+		contactInfo: contactInfo{
 			email:   "alex.anderson@gmail.com",
 			zipCode: 9400,
 		},
@@ -32,12 +33,23 @@ func main() {
 
 	alex3.firstName = "Simon"
 	alex3.lastName = "Henderson"
-	alex3.contact.email = "tescior@gmail.com"
-	alex3.contact.zipCode = 222
+	alex3.contactInfo.email = "tescior@gmail.com"
+	alex3.contactInfo.zipCode = 222
 
 	fmt.Println(alex)
 	fmt.Println(alex2)
 	fmt.Println(alex3)
 
-	fmt.Printf("%+v\n", alex3)
+	alex.updateName("Robocop")
+	alex.print()
+	alex2.print()
+	alex3.print()
+}
+
+func (p person) updateName(newFirstName string) {
+	p.firstName = newFirstName
+}
+
+func (p person) print() {
+	fmt.Printf("%+v\n", p)
 }
