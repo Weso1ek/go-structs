@@ -15,6 +15,9 @@ type person struct {
 }
 
 func main() {
+
+	// ******** STRUCTS **********************************************************
+
 	// ONE WAY
 	alex := person{
 		firstName: "Alex",
@@ -48,6 +51,34 @@ func main() {
 	alex.print()
 	alex2.print()
 	alex3.print()
+
+	// ******** MAPS **********************************************************
+
+	// declare 1 method
+	colors := map[string]string{
+		"red":   "#ff0000",
+		"blue":  "#00ff00",
+		"green": "#00ff00",
+	}
+
+	// declare 2 method
+
+	var colors2 map[string]string // zero value empty map
+
+	// declare 3 method
+
+	colors3 := make(map[string]string)
+	colors3["white"] = "#ffffff"
+
+	delete(colors3, "white") // delete map element
+
+	//fmt.Println(colors)
+	fmt.Println(colors2)
+	fmt.Println(colors3)
+
+	printMap(colors)
+
+	// ******** MAPS **********************************************************
 }
 
 func (p *person) updateName(newFirstName string) {
@@ -68,4 +99,10 @@ func getMonthlyPrice(tier string) int {
 	}
 
 	return 0
+}
+
+func printMap(c map[string]string) {
+	for color, hex := range c {
+		fmt.Println(color, hex)
+	}
 }
